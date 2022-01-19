@@ -13,7 +13,6 @@ export default function Products() {
   const sortedLowHigh = _.orderBy(foundProducts, ["price"], ["asc"])
   const sortedHighLow = _.orderBy(foundProducts, ["price"], ["desc"])
   const [sortParam, setSortParam] = useState(foundProducts);
-  
 
   //filter function for search results
   const filter = (e) => {
@@ -43,23 +42,23 @@ export default function Products() {
 
   return (
     <div>
-      <div>
+      <div className="search-sort">
         <input
+          className="search"
           icon="search"
           type="search"
           placeholder="Search..."
           onChange={filter}/>
-      </div>
-
       <Dropdown>
-        <DropdownButton id="dropcown-btn" title="SORT BY:">
+        <DropdownButton variant="dark" className="sort-btn" id="dropdown-btn" title="SORT BY:">
           <Dropdown.Item onClick={()=>{setSortParam(sortedAZ)}}>Alphabetically, A-Z</Dropdown.Item>
           <Dropdown.Item onClick={()=>{setSortParam(sortedZA)}}>Alphabetically, Z-A</Dropdown.Item>
           <Dropdown.Item onClick={()=>{setSortParam(sortedLowHigh)}}>Price, low to high</Dropdown.Item>
           <Dropdown.Item onClick={()=>{setSortParam(sortedHighLow)}}>Price, high to low</Dropdown.Item>
         </DropdownButton>
       </Dropdown>
-  
+      </div>
+
       <Container className="grid">
         <Row>
           {sortParam.map((item) => {

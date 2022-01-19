@@ -1,3 +1,24 @@
 .navbar {
   font-size: 50px;
 }
+
+.card {
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.search-sort {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.search {
+  padding: 10px;
+  margin: 10px;
+}
+.sort-btn {
+  padding: 10px;
+  margin-left: 50px;
+}
