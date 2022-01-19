@@ -4,16 +4,30 @@ import axios from "axios"
 export default function Products() {
   const [products, setProducts] = useState([]);
 
-  useEffect = async () => {
-    const api = "https://products-api-01.herokuapp.com/api/products";
-    const res = axios.get(api)
-    console.log(res);
-  }
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const api = "https://products-api-01.herokuapp.com/api/products";
+      axios.get(api)
+        .then(data => {
+          console.log(data.data);
+          
+        })
+        .catch(
+        console.log("error")
+      )
+    }
+    fetchProducts();
+  }, []);
 
 
 
 
-  return <div>
 
-  </div>;
+  return(
+  <div>
+    Products Comp
+
+    </div>
+  )
 }
