@@ -10,6 +10,8 @@ export default function Products() {
 
   const sortedAZ = _.sortBy(foundProducts, "name");
   const sortedZA = _.orderBy(foundProducts, ["name"], ["desc"])
+  const sortedLowHigh = _.orderBy(foundProducts, ["price"], ["asc"])
+  const sortedHighLow = _.orderBy(foundProducts, ["price"], ["desc"])
   const [sortParam, setSortParam] = useState(foundProducts);
   
 
@@ -53,15 +55,13 @@ export default function Products() {
         <DropdownButton id="dropcown-btn" title="SORT BY:">
           <Dropdown.Item onClick={()=>{setSortParam(sortedAZ)}}>Alphabetically, A-Z</Dropdown.Item>
           <Dropdown.Item onClick={()=>{setSortParam(sortedZA)}}>Alphabetically, Z-A</Dropdown.Item>
-          <Dropdown.Item>Price, low to high</Dropdown.Item>
-          <Dropdown.Item>Price, high to low</Dropdown.Item>
+          <Dropdown.Item onClick={()=>{setSortParam(sortedLowHigh)}}>Price, low to high</Dropdown.Item>
+          <Dropdown.Item onClick={()=>{setSortParam(sortedHighLow)}}>Price, high to low</Dropdown.Item>
         </DropdownButton>
       </Dropdown>
   
       <Container className="grid">
         <Row>
-          {/* {foundProducts.map((item) => { */}
-          {/* {sortedAZ.map((item) => { */}
           {sortParam.map((item) => {
             return (
               <Col xs="12" sm="6" lg="4" xl="3" key={item._id}>
