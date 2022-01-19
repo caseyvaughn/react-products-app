@@ -10,24 +10,22 @@ export default function Products() {
       const api = "https://products-api-01.herokuapp.com/api/products";
       axios.get(api)
         .then(data => {
-          console.log(data.data);
-          
+          // console.log(data.data);
+          setProducts(data.data);
         })
-        .catch(
-        console.log("error")
-      )
+        .catch(console.log("error"))
     }
     fetchProducts();
   }, []);
 
-
-
-
-
   return(
-  <div>
-    Products Comp
-
+    <div>
+      Products Comp
+      {products.map((item) => {
+        return (
+          <h1>Name: {item.name}</h1>
+        )
+      })}
     </div>
   )
 }
