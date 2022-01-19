@@ -2,6 +2,7 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom"
 import Products from './components/Products';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

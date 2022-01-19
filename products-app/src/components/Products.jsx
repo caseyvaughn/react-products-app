@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios"
+import { Card, Container, Row, Col } from "react-bootstrap";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -13,19 +14,32 @@ export default function Products() {
           // console.log(data.data);
           setProducts(data.data);
         })
-        .catch(console.log("error"))
+        
     }
     fetchProducts();
   }, []);
 
-  return(
+  return (
     <div>
-      Products Comp
-      {products.map((item) => {
-        return (
-          <h1>Name: {item.name}</h1>
-        )
-      })}
+      <Container className="grid" class="m-5 pb-5">
+        <Row>
+    
+          {products.map((item) => {
+            return (
+              <Col xs="12" sm="6" lg="4" xl="3" key={item._id}>
+                <Card>
+                  <Card.Img src={item.imgURL} alt={item.name}></Card.Img>
+                  <Card.Body>
+                    <Card.Text>{item.name}</Card.Text>
+                    <Card.Text>$ {item.price}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            )
+          })}
+        
+        </Row>
+    </Container>
     </div>
   )
 }
