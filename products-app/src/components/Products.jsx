@@ -46,14 +46,13 @@ export default function Products() {
           icon="search"
           type="search"
           placeholder="Search..."
-          onChange={filter}
-        />
+          onChange={filter}/>
       </div>
 
       <Dropdown>
         <DropdownButton id="dropcown-btn" title="SORT BY:">
-          <Dropdown.Item onClick={()=>{setSortParam("sortedAZ")}}>Alphabetically, A-Z</Dropdown.Item>
-          <Dropdown.Item onClick={()=>{setSortParam("sortedZA")}}>Alphabetically, Z-A</Dropdown.Item>
+          <Dropdown.Item onClick={()=>{setSortParam(sortedAZ)}}>Alphabetically, A-Z</Dropdown.Item>
+          <Dropdown.Item onClick={()=>{setSortParam(sortedZA)}}>Alphabetically, Z-A</Dropdown.Item>
           <Dropdown.Item>Price, low to high</Dropdown.Item>
           <Dropdown.Item>Price, high to low</Dropdown.Item>
         </DropdownButton>
