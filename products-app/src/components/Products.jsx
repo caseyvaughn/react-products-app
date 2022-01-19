@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios"
+import { Link } from "react-router-dom";
+import axios from "axios";
 import { Card, Container, Row, Col } from "react-bootstrap";
 
 export default function Products() {
@@ -14,10 +15,11 @@ export default function Products() {
           // console.log(data.data);
           setProducts(data.data);
         })
-        
     }
     fetchProducts();
   }, []);
+
+
 
   return (
     <div>
@@ -27,13 +29,15 @@ export default function Products() {
           {products.map((item) => {
             return (
               <Col xs="12" sm="6" lg="4" xl="3" key={item._id}>
+                <Link to={`/products/${item._id}`}>
                 <Card>
                   <Card.Img src={item.imgURL} alt={item.name}></Card.Img>
                   <Card.Body>
                     <Card.Text>{item.name}</Card.Text>
                     <Card.Text>$ {item.price}</Card.Text>
                   </Card.Body>
-                </Card>
+                  </Card>
+                  </Link>
               </Col>
             )
           })}
