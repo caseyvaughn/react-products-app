@@ -2,6 +2,7 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom"
 import Products from './components/Products';
+import ProductDetail from './components/ProductDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Products />} />
-        <Route path="/products/:id" element={<h3>Product Detail</h3>} />
+        <Route path="/products/:id" element={<ProductDetail />} />
       </Routes>
         
     </div>

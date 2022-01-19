@@ -7,6 +7,7 @@ export default function Products() {
   const [products, setProducts] = useState([]);
 
 
+
   useEffect(() => {
     const fetchProducts = async () => {
       const api = "https://products-api-01.herokuapp.com/api/products";
@@ -19,18 +20,15 @@ export default function Products() {
     fetchProducts();
   }, []);
 
-
-
   return (
     <div>
-      <Container className="grid" class="m-5 pb-5">
+      <Container className="grid">
         <Row>
-    
           {products.map((item) => {
             return (
               <Col xs="12" sm="6" lg="4" xl="3" key={item._id}>
                 <Link to={`/products/${item._id}`}>
-                <Card>
+                  <Card>
                   <Card.Img src={item.imgURL} alt={item.name}></Card.Img>
                   <Card.Body>
                     <Card.Text>{item.name}</Card.Text>
@@ -41,7 +39,6 @@ export default function Products() {
               </Col>
             )
           })}
-        
         </Row>
     </Container>
     </div>
