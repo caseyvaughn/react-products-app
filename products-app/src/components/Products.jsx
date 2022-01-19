@@ -5,27 +5,45 @@ import { Card, Container, Row, Col } from "react-bootstrap";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
+  //value of the search field 
+  // const [searchInput, setSearchInput] = useState("");
+  //search result
+  const [foundProducts, setFoundProducts] = useState(products);
+  console.log(products);
   
-  const filteredProducts = products.filter(
-    product => {
+  // const filteredProducts = products.filter(
+  //   product => {
+  //     return (
+  //       product
+  //         .name
+  //         .includes(searchInput.toLowerCase())
+  //     )
+  //   }
+  // )
+
+    //filter function for search results
+  const filter = (e) => {
+    const search = e.target.value;
+    console.log(search);
+    const results = products.filter((product) => {
       return (
-        product
-          .name
-          .includes(searchInput.toLowerCase())
+        product.name.toLowerCase().includes(search.toLowerCase())
       )
-    }
-  )
-  console.log(filteredProducts);
-
-  const searchItems = (searchValue) => {
-    setSearchInput(searchValue);
-    console.log(searchInput);
-    products.filter((item) => {
-      return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
-    })
-
+    });
+    console.log(results);
+    setFoundProducts(results);
+    console.log(foundProducts);
   }
+
+  // console.log(foundProducts);
+
+  // const searchItems = (searchValue) => {
+  //   setSearchInput(searchValue);
+  //   console.log(searchInput);
+  //   products.filter((item) => {
+  //     return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+  //   })
+  // }
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -44,17 +62,21 @@ export default function Products() {
       <div>
         <input
           icon="search"
-          // type="search"
+          type="search"
           placeholder="Search..."
           // onChange={handleChange}
-          onChange={(e) => searchItems(e.target.value)}
+          onChange={filter}
+          // onChange={(e) => searchItems(e.target.value)}
         />
+      </div>
+      <div>
+      
       </div>
 
 
       <Container className="grid">
         <Row>
-          {products.map((item) => {
+          {foundProducts.map((item) => {
             return (
               <Col xs="12" sm="6" lg="4" xl="3" key={item._id}>
                 <Link to={`/products/${item._id}`} style={{ textDecoration: 'none', color: "black"}}>
